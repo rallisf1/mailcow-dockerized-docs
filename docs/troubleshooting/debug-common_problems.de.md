@@ -21,7 +21,7 @@ Escape-Zeichen ist '^]'.
 
 ## Meine Mails werden als Spam identifiziert
 
-Bitte lesen Sie unsere [DNS-Konfiguration](../prerequisite/prerequisite-dns.de.md) Anleitung.
+Bitte lesen Sie unsere [DNS-Konfiguration](../getting-started/prerequisite-dns.de.md) Anleitung.
 
 ## docker compose wirft seltsame Fehler aus.
 
@@ -33,7 +33,7 @@ Bitte lesen Sie unsere [DNS-Konfiguration](../prerequisite/prerequisite-dns.de.m
 
 Wenn Sie eine oder ähnliche Meldungen erhalten, während Sie versuchen, mailcow: dockerized auszuführen, überprüfen Sie bitte, ob Sie die **aktuellste** Version von **Docker** und **docker compose** haben.
 
-## Container XY ist ungesund
+## Container XY ist "unhealthy"
 
 Dieser Fehler versucht Ihnen mitzuteilen, dass eine der (Gesundheits-)Bedingungen für einen bestimmten Container nicht erfüllt ist. Daher kann er nicht gestartet werden. Dies kann verschiedene Gründe haben, der häufigste ist ein aktualisierter Git-Klon, aber ein altes Docker-Image oder umgekehrt.
 
@@ -50,7 +50,7 @@ Wenn Sie eine Fehlermeldung erhalten wie:
 ERROR: for postfix-mailcow Cannot start service postfix-mailcow: driver failed programming external connectivity on endpoint mailcowdockerized_postfix-mailcow_1: Error starting userland proxy: listen tcp 0.0.0:25: bind: address already in use
 ```
 
-während Sie versuchen, mailcow: dockerized zu starten / zu installieren, stellen Sie sicher, dass Sie unseren Abschnitt über [prerequisites](../prerequisite/prerequisite-system.de.md/#firewall-ports) befolgt haben.
+Während Sie versuchen, mailcow: dockerized zu starten / zu installieren, stellen Sie sicher, dass Sie unseren Abschnitt über [prerequisites](../getting-started/prerequisite-system.de.md/#firewall-ports) befolgt haben.
 
 
 ## XYZ kann keine Verbindung zu ...
@@ -132,10 +132,6 @@ Anschließend Rspamd neustarten mit:
 
 Nun kompiliert Rspamd die besagten Regex Maps wieder neu mit Hyperscan.
 
-!!! warning "Achtung"
-    Das originale Hyperscan funktioniert (Stand Mai 2023) **NUR** auf x86. ARM64 wird voraussichtlich **nicht** offiziell von Intel supported[^3]
-
 
 [^1]: [netcat](https://linux.die.net/man/1/nc), [nmap](https://linux.die.net/man/1/nmap), [openssl](https://wiki.openssl.org/index.php/Manual:S_client(1)), [telnet](https://linux.die.net/man/1/telnet), etc.
 [^2]: [Hyperscan](https://github.com/intel/hyperscan)
-[^3]: [Status für Hyperscan auf ARM64](https://github.com/intel/hyperscan/pull/287#issuecomment-746558138)

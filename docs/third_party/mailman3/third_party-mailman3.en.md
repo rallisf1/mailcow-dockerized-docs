@@ -32,7 +32,7 @@ This guide is based on different steps:
 
 ### DNS setup
 
-Most of the configuration is covered by *mailcow*s [DNS setup](../../prerequisite/prerequisite-dns.en.md). After finishing this setup add another subdomain for *Mailman*, e.g. `lists.example.org` that points to the same server:
+Most of the configuration is covered by *mailcow*s [DNS setup](../../getting-started/prerequisite-dns.en.md). After finishing this setup add another subdomain for *Mailman*, e.g. `lists.example.org` that points to the same server:
 
 ```
 # Name    Type       Value
@@ -91,7 +91,7 @@ certbot certonly -d MAILMAN_DOMAIN
 
 #### Install mailcow
 
-Follow the [mailcow installation](../../i_u_m/i_u_m_install.en.md). **Omit step 5 and do not pull and start!**
+Follow the [mailcow installation](../../getting-started/i_u_m_install.en.md). **Omit step 5 and do not pull and start!**
 
 #### Configure mailcow
 
@@ -329,13 +329,13 @@ When you create a new list and try to immediately send an e-mail, *postfix* resp
 
 ## Update
 
-**mailcow** has it's own update script in `/opt/mailcow-dockerized/update.sh`, [see the docs](../../i_u_m/i_u_m_update.en.md).
+**mailcow** has it's own update script in `/opt/mailcow-dockerized/update.sh`, [see the docs](../../getting-started/i_u_m_update.en.md).
 
 For **Mailman** just fetch the newest version from the [github repository](https://github.com/maxking/docker-mailman).
 
 ## Backup
 
-**mailcow** has an own backup script. [Read the docs](../../backup_restore/b_n_r-backup.en.md) for further informations.
+**mailcow** has an own backup script. [Read the docs](../../backup_restore_migrate/b_r_m-backup.en.md) for further informations.
 
 **Mailman** won't state backup instructions in the README.md. In the [gitbucket of pgollor](https://gitbucket.pgollor.de/docker/mailman-mailcow-integration/blob/master/mailman-backup.sh) is a script that may be helpful.
 

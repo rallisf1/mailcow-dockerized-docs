@@ -1,3 +1,5 @@
+### Migration within the same system type (x86 to x86, ARM64 to ARM64, etc.)
+
 !!! warning
     This guide assumes you intend to migrate an existing mailcow server (source) over to a brand new, empty server (target). It takes no care about preserving any existing data on your target server and will erase anything within `/var/lib/docker/volumes` and thus any Docker volumes you may have already set up.
 
@@ -5,7 +7,7 @@
     Alternatively, you can use the `./helper-scripts/backup_and_restore.sh` script to create a full backup on the source machine, then install mailcow on the target machine as usual, copy over your `mailcow.conf` and use the same script to restore your backup to the target machine.
 
 **1\.**
-Follow the [installation guide](i_u_m_install.en.md) to install Docker and Compose.
+Follow the [installation guide](../getting-started/i_u_m_install.en.md) to install Docker and Compose.
 
 **2\.** Stop Docker and assure Docker has stopped:
 ```
@@ -13,7 +15,11 @@ systemctl stop docker.service
 systemctl status docker.service
 ```
 
-**3\.**	Run the following commands on the source machine (take care of adding the trailing slashes in the first path parameter as shown below!) - **WARNING: This command will erase anything that may already exist under `/var/lib/docker/volumes` on the target machine**:
+**3\.**	Run the following commands on the source machine (take care of adding the trailing slashes in the first path parameter as shown below!) 
+
+!!! danger
+    This command (the second one) deletes everything that is already under `/var/lib/docker/volumes` on the target server. So make sure that nothing important is left on the target server before running the following commands!
+
 ```
 rsync -aHhP --numeric-ids --delete /opt/mailcow-dockerized/ root@target-machine.example.com:/opt/mailcow-dockerized
 rsync -aHhP --numeric-ids --delete /var/lib/docker/volumes/ root@target-machine.example.com:/var/lib/docker/volumes
@@ -36,7 +42,7 @@ rsync -aHhP --numeric-ids --delete /var/lib/docker/volumes/ root@target-machine.
     systemctl stop docker.service
     ```
 
-**5\.** Repeat step 3 with the same commands. This will be much quicker than the first time.
+**5\.** Repeat step 3 with the same commands. This is much faster than the first time, because this time only the diffs have to be synchronized.
 
 **6\.** Switch over to the target machine and start Docker.
 ```
@@ -58,7 +64,7 @@ systemctl start docker.service
     docker-compose pull
     ```
 
-**8\.** Start the whole mailcow stack and everything should be done!
+**8\.** Start the whole mailcow stack and wait a moment.
 === "docker compose (Plugin)"
 
     ``` bash
@@ -70,5 +76,10 @@ systemctl start docker.service
     ``` bash
     docker compose up -d
     ```
+If everything worked, mailcow should look and work the same on the new server as it did on the old one!
 
 **9\.** Finally, change your DNS settings to point to the target server. Also check the `SNAT_TO_SOURCE` variable in your `mailcow.conf` file if you have changed your public IP address, otherwise SOGo may not work.
+
+**10\.** Enjoy mailcow on the new server! :grinning:
+
+---

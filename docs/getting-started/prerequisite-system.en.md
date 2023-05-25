@@ -6,7 +6,7 @@ Before you run **mailcow: dockerized**, there are a few requirements that you sh
 !!! info
     - mailcow: dockerized requires [some ports](#default-ports) to be open for incoming connections, so make sure that your firewall is not blocking these.
     - Make sure that no other application is interfering with mailcow's configuration, such as another mail service
-    - A correct DNS setup is crucial to every good mailserver setup, so please make sure you got at least the [basics](../prerequisite/prerequisite-dns.en.md#the-minimal-dns-configuration) covered before you begin!
+    - A correct DNS setup is crucial to every good mailserver setup, so please make sure you got at least the [basics](prerequisite-dns.en.md#the-minimal-dns-configuration) covered before you begin!
     - Make sure that your system has a correct date and [time setup](#date-and-time). This is crucial for various components like two factor TOTP authentication.
 
 ## Minimum System Resources
@@ -21,7 +21,7 @@ Please make sure that your system has at least the following resources:
 | CPU                     | 1 GHz                                            |
 | RAM                     | **Minimum** 6 GiB + 1 GiB swap (default config)  |
 | Disk                    | 20 GiB (without emails)                          |
-| System Type             | x86_64                                           |
+| System Type             | x86_64, **AArch64 (ARM64)** :warning:{ title="Work in progress, Stability may possibly be affected" } |
 
 ClamAV and Solr can be greedy with RAM. You may disable them in `mailcow.conf` by settings `SKIP_CLAMD=y` and `SKIP_SOLR=y`.
 
@@ -197,4 +197,4 @@ You may want to [disable cloud-init network changes.](https://wiki.hetzner.de/in
 
 ## MTU
 
-Especially relevant for OpenStack users: Check your MTU and set it accordingly in docker-compose.yml. See [Troubleshooting](../i_u_m/i_u_m_install.md#users-with-a-mtu-not-equal-to-1500-eg-openstack) in our Installation guide.
+Especially relevant for OpenStack users: Check your MTU and set it accordingly in docker-compose.yml. See [Troubleshooting](i_u_m_install.md#users-with-a-mtu-not-equal-to-1500-eg-openstack) in our Installation guide.

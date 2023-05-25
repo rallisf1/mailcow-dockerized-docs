@@ -22,7 +22,7 @@ Escape character is '^]'.
 
 ## My mails are identified as Spam
 
-Please read our guide on [DNS configuration](../prerequisite/prerequisite-dns.en.md).
+Please read our guide on [DNS configuration](../getting-started/prerequisite-dns.en.md).
 
 ## docker compose throws weird errors
 
@@ -51,7 +51,7 @@ If you get an error message like:
 ERROR: for postfix-mailcow  Cannot start service postfix-mailcow: driver failed programming external     connectivity on endpoint mailcowdockerized_postfix-mailcow_1: Error starting userland proxy: listen tcp 0.0.0.0:25: bind: address already in use
 ```
 
-while trying to start / install mailcow: dockerized, make sure you've followed our section on the [prerequisites](../prerequisite/prerequisite-system.en.md/#firewall-ports).
+while trying to start / install mailcow: dockerized, make sure you've followed our section on the [prerequisites](../getting-started/prerequisite-system.en.md/#firewall-ports).
 
 ## XYZ can't connect to ...
 
@@ -132,10 +132,6 @@ Restart Rspamd afterwards:
 
 Now Rspamd recompiles the said regex maps again with Hyperscan.
 
-!!! warning
-    The original Hyperscan works (as of May 2023) **ONLY** on x86. ARM64 is **not** expected to be officially supported by Intel[^3]
-
 
 [^1]: [netcat](https://linux.die.net/man/1/nc), [nmap](https://linux.die.net/man/1/nmap), [openssl](https://wiki.openssl.org/index.php/Manual:S_client(1)), [telnet](https://linux.die.net/man/1/telnet), etc.
 [^2]: [Hyperscan](https://github.com/intel/hyperscan)
-[^3]: [Status for Hyperscan on ARM64](https://github.com/intel/hyperscan/pull/287#issuecomment-746558138)

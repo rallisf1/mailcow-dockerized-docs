@@ -68,7 +68,7 @@ Das folgende Skript kann in `/etc/cron.daily/mailcow-backup` platziert werden - 
 #!/bin/sh
 
 # Backup mailcow data
-# https://mailcow.github.io/mailcow-dockerized-docs/b_n_r_backup/
+# https://mailcow.github.io/mailcow-dockerized-docs/b_r_m_backup/
 
 set -e
 

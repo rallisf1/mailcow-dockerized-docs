@@ -28,6 +28,8 @@ theme:
     - content.tabs.link
     - search.share
     - search.highlight
+    - toc.follow
+    - toc.integrate
 
 markdown_extensions:
   - abbr
@@ -47,17 +49,18 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 nav:
-  - 'Information & Support': 'index.md'
-  - 'Prerequisites':
-    - 'Prepare your system': 'prerequisite/prerequisite-system.md'
-    - 'DNS setup': 'prerequisite/prerequisite-dns.md'
-  - 'Installation, Update & Migration':
-    - 'Installation': 'i_u_m/i_u_m_install.md'
-    - 'Update': 'i_u_m/i_u_m_update.md'
-    - 'Migration': 'i_u_m/i_u_m_migration.md'
-    - 'Deinstallation': 'i_u_m/i_u_m_deinstall.md'
+  - 'Home': 'index.md'
+  - 'Getting started':
+    - 'Prepare your system': 'getting-started/prerequisite-system.md'
+    - 'DNS setup': 'getting-started/prerequisite-dns.md'
+    - 'Installation': 'getting-started/i_u_m_install.md'
+    - 'Update': 'getting-started/i_u_m_update.md'
+    - 'Deinstallation': 'getting-started/i_u_m_deinstall.md'
   - 'Post Installation Tasks':
     - 'Advanced SSL': 'post_installation/firststeps-ssl.md'
     - 'Disable IPv6': 'post_installation/firststeps-disable_ipv6.md'
@@ -85,16 +88,16 @@ nav:
     - 'Remove Persistent Data': 'troubleshooting/debug-rm_volumes.md'
     - 'Reset Passwords (incl. SQL)': 'troubleshooting/debug-reset_pw.md'
     - 'Reset TLS certificates': 'troubleshooting/debug-reset_tls.md'
-  - 'Backup & Restore':
-    - 'Component backup & restore':
-      - 'Backup': 'backup_restore/b_n_r-backup.md'
-      - 'Restore': 'backup_restore/b_n_r-restore.md'
-    - 'Cold-standby (rolling backup)': 'backup_restore/b_n_r-coldstandby.md'
+  - 'Backup, Restore & Migration':
+    - 'Backup': 'backup_restore_migrate/b_r_m-backup.md'
+    - 'Restore': 'backup_restore_migrate/b_r_m-restore.md'
+    - 'Migration': 'backup_restore_migrate/b_r_m_migration.md'
+    - 'Cold-standby (rolling backup)': 'backup_restore_migrate/b_r_m-coldstandby.md'
     - 'Manual backups':
-      - 'Maildir': 'backup_restore/b_n_r-backup_restore-maildir.md'
-      - 'MySQL (mysqldump)': 'backup_restore/b_n_r-backup_restore-mysql.md'
+      - 'Maildir': 'backup_restore_migrate/b_r_m-backup_restore-maildir.md'
+      - 'MySQL (mysqldump)': 'backup_restore_migrate/b_r_m-backup_restore-mysql.md'
     - 'mailcow-internal backups':
-      - 'Recover accidentally deleted data': 'backup_restore/b_n_r-accidental_deletion.md'
+      - 'Recover accidentally deleted data': 'backup_restore_migrate/b_r_m-accidental_deletion.md'
   - 'Manual/Guides/Examples':
     - 'mailcow UI':
       - 'Blacklist / Whitelist': 'manual-guides/mailcow-UI/u_e-mailcow_ui-bl_wl.md'
@@ -177,13 +180,14 @@ plugins:
       default_language: en
       languages:
         en: English
-        de: Deutsch
+        de: 
+          name: Deutsch
+          site_name: "mailcow: dockerized Dokumentation"
       nav_translations:
       #### Begin of german translation
         de:
-          'Information & Support': 'Informationen & Support'
           ### Prerequisites Section
-          'Prerequisites': 'Voraussetzungen'
+          'Getting started': 'Erste Schritte'
           'Prepare your system': 'Systemvoraussetzungen'
           'DNS setup': 'DNS Einstellungen'
           ### Installation Section
@@ -276,19 +280,15 @@ plugins:
       timezone: Europe/Berlin
   - redirects:
       redirect_maps:
-        # 'old': 'new'
-        # LEGACY
         'u_e-mailpiler-integration.md': 'third_party/mailpiler/third_party-mailpiler_integration.en.md'
-        'b_n_r_accidental_deletion.md': 'backup_restore/b_n_r-accidental_deletion.en.md'
+        'b_r_m_accidental_deletion.md': 'backup_restore_migrate/b_r_m-accidental_deletion.en.md'
         'debug-reset-tls.md': 'troubleshooting/debug-reset_tls.en.md'
-        # NEW DUE TO NEW LAYOUT
-        'mailcow-dockerized-docs/i_u_m/i_u_m_install.md': 'i_u_m/i_u_m_install.en.md' # https://github.com/mailcow/mailcow-dockerized/pull/5196
-        'prerequisite-system.md': 'prerequisite/prerequisite-system.en.md'
-        'prerequisite-dns.md': 'prerequisite/prerequisite-dns.en.md'
-        'i_u_m_install.md': 'i_u_m/i_u_m_install.en.md'
-        'i_u_m_update.md': 'i_u_m/i_u_m_update.en.md'
-        'i_u_m_migration.md': 'i_u_m/i_u_m_migration.en.md'
-        'i_u_m_deinstall.md': 'i_u_m/i_u_m_deinstall.en.md'
+        'prerequisite-system.md': 'getting-started/prerequisite-system.en.md'
+        'prerequisite-dns.md': 'getting-started/prerequisite-dns.en.md'
+        'install.md': 'getting-started/i_u_m_install.en.md'
+        'i_u_m/i_u_m_install.md': 'getting-started/i_u_m_install.en.md'
+        'update.md': 'getting-started/i_u_m_update.en.md'
+        'deinstall.md': 'getting-started/i_u_m_deinstall.en.md'
         'firststeps-ssl.md': 'post_installation/firststeps-ssl.en.md'
         'firststeps-disable_ipv6.md': 'post_installation/firststeps-disable_ipv6.en.md'
         'firststeps-dmarc_reporting.md': 'post_installation/firststeps-dmarc_reporting.en.md'
@@ -313,13 +313,13 @@ plugins:
         'debug-rm_volumes.md': 'troubleshooting/debug-rm_volumes.en.md'
         'debug-reset_pw.md': 'troubleshooting/debug-reset_pw.en.md'
         'debug-reset_tls.md': 'troubleshooting/debug-reset_tls.en.md'
-        'b_n_r_backup.md': 'backup_restore/b_n_r-backup.en.md'
-        'b_n_r-backup.md': 'backup_restore/b_n_r-backup.en.md'
-        'b_n_r-restore.md': 'backup_restore/b_n_r-restore.en.md'
-        'b_n_r-coldstandby.md': 'backup_restore/b_n_r-coldstandby.en.md'
-        'b_n_r-backup_restore-maildir.md': 'backup_restore/b_n_r-backup_restore-maildir.en.md'
-        'b_n_r-backup_restore-mysql.md': 'backup_restore/b_n_r-backup_restore-mysql.en.md'
-        'b_n_r-accidental_deletion.md': 'backup_restore/b_n_r-accidental_deletion.en.md'
+        'b_n_r_backup.md': 'backup_restore_migrate/b_r_m-backup.en.md'
+        'b_n_r-restore.md': 'backup_restore_migrate/b_r_m-restore.en.md'
+        'migration.md': 'backup_restore_migrate/b_r_m_migration.en.md'
+        'b_n_r-coldstandby.md': 'backup_restore_migrate/b_r_m-coldstandby.en.md'
+        'b_n_r-backup_restore-maildir.md': 'backup_restore_migrate/b_r_m-backup_restore-maildir.en.md'
+        'b_n_r-backup_restore-mysql.md': 'backup_restore_migrate/b_r_m-backup_restore-mysql.en.md'
+        'b_n_r-accidental_deletion.md': 'backup_restore_migrate/b_r_m-accidental_deletion.en.md'
         'u_e-mailcow_ui-bl_wl.md': 'manual-guides/mailcow-UI/u_e-mailcow_ui-bl_wl.en.md'
         'u_e-mailcow_ui-config.md': 'manual-guides/mailcow-UI/u_e-mailcow_ui-config.en.md'
         'u_e-mailcow_ui-css.md': 'manual-guides/mailcow-UI/u_e-mailcow_ui-css.en.md'
@@ -383,11 +383,9 @@ plugins:
         'third_party-portainer.md': 'third_party/portainer/third_party-portainer.en.md'
         'third_party-roundcube.md': 'third_party/roundcube/third_party-roundcube.en.md'
   - search:
-#      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
-      lang:
-         - en
-         - de
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
   - social
+  - glightbox
 
 
 extra:

@@ -123,6 +123,6 @@ If everything worked fine (for which we made a backup before) the mailcow UI sho
 !!! info
         We recommend using the Nightly Update only if you have another machine or VM and **NOT** use it productively.
 
-1. use the [cold standby script](../backup_restore/b_n_r-coldstandby.en.md) to copy the machine **before** the switch to the nightly builds on another system.
+1. use the [cold standby script](../backup_restore_migrate/b_r_m-coldstandby.en.md) to copy the machine **before** the switch to the nightly builds on another system.
 2. run the `update.sh` script on the new machine with the parameter `--nightly` and confirm.
 3. experience/test the nightly updates on the secondary machine.

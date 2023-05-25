@@ -6,7 +6,7 @@ Bevor Sie **mailcow: dockerized** ausführen, sollten Sie einige Voraussetzungen
 !!! info
     - mailcow: dockerized erfordert, dass [einige Ports](#standard-ports) für eingehende Verbindungen offen sind, also stellen Sie sicher, dass Ihre Firewall diese nicht blockiert.
     - Stellen Sie sicher, dass keine andere Anwendung die Konfiguration von mailcow stört, wie z.B. ein anderer Maildienst
-    - Ein korrektes DNS-Setup ist entscheidend für jedes gute Mailserver-Setup, also stellen Sie bitte sicher, dass Sie zumindest die [basics](../prerequisite/prerequisite-dns.de.md#die-minimale-dns-konfiguration) abgedeckt haben, bevor Sie beginnen!
+    - Ein korrektes DNS-Setup ist entscheidend für jedes gute Mailserver-Setup, also stellen Sie bitte sicher, dass Sie zumindest die [basics](prerequisite-dns.de.md#die-minimale-dns-konfiguration) abgedeckt haben, bevor Sie beginnen!
     - Stellen Sie sicher, dass Ihr System ein korrektes Datum und eine korrekte [Zeiteinstellung](#datum-und-uhrzeit) hat. Dies ist entscheidend für verschiedene Komponenten wie die Zwei-Faktor-TOTP-Authentifizierung.
 
 ## Minimale Systemressourcen
@@ -21,9 +21,9 @@ Bitte stellen Sie sicher, dass Ihr System mindestens über die folgenden Ressour
 | CPU | 1 GHz |
 | RAM | **Minimum** 6 GiB + 1 GiB Swap (Standardkonfiguration) |
 | Festplatte | 20 GiB (ohne Emails) |
-| Systemtyp | x86_64 |
+| Systemtyp | x86_64, **AArch64 (ARM64)** :warning:{ title="Aktuell in Arbeit, Stabilität kann evtl. beeinträchtigt sein" } |
 
-ClamAV und Solr können sehr viel Arbeitspeicher verbrauchen. Sie können diese in der `mailcow.conf` durch die Einstellungen `SKIP_CLAMD=y` und `SKIP_SOLR=y` jedoch auch deaktivieren.
+ClamAV und Solr können sehr viel Arbeitsspeicher verbrauchen. Sie können diese in der `mailcow.conf` durch die Einstellungen `SKIP_CLAMD=y` und `SKIP_SOLR=y` jedoch auch deaktivieren.
 
 !!! info 
 	Wir sind uns bewusst, dass ein reiner MTA auf 128 MiB RAM laufen kann. 
@@ -199,4 +199,4 @@ Sie können außerdem die [cloud-init Netzwerkänderungen deaktivieren.](https:/
 
 ## MTU
 
-Besonders relevant für OpenStack-Benutzer: Überprüfen Sie Ihre MTU und setzen Sie sie entsprechend in docker-compose.yml. Siehe [Problebehandlungen](../i_u_m/i_u_m_install.de.md#benutzer-mit-einer-mtu-ungleich-1500-zb-openstack) in unseren Installationsanleitungen.
+Besonders relevant für OpenStack-Benutzer: Überprüfen Sie Ihre MTU und setzen Sie sie entsprechend in docker-compose.yml. Siehe [Problebehandlungen](i_u_m_install.de.md#benutzer-mit-einer-mtu-ungleich-1500-zb-openstack) in unseren Installationsanleitungen.
